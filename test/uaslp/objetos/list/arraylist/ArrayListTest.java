@@ -1,15 +1,15 @@
-package uaslp.objetos.list.linkedlist;
+package uaslp.objetos.list.arraylist;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import uaslp.objetos.list.Iterator;
-import uaslp.objetos.list.arraylist.ArrayList;
+//import uaslp.objetos.list.linkedlist.ArrayList;
 
-public class LinkedListTest {
+public class ArrayListTest {
     @Test
     public void givenANewList_thenSizeIsZero(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
 
         //When:
         int size = lista.getSize();
@@ -21,7 +21,7 @@ public class LinkedListTest {
     @Test
     public void givenANewList_whenAddAtTail_thenSizeIsOne(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
 
         //When:
         lista.addAtTail("Uno");
@@ -34,7 +34,7 @@ public class LinkedListTest {
     @Test
     public void givenANonEmptyList_whenAddAtTail_thenSizeIsIncreased(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtTail("Uno");
 
         //When:
@@ -49,7 +49,7 @@ public class LinkedListTest {
     @Test
     public void givenANewList_whenAddAtFront_thenSizeIsOne(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
 
         //When:
         lista.addAtFront("Uno");
@@ -62,7 +62,7 @@ public class LinkedListTest {
     @Test
     public void givenANonEmptyList_whenAddAtFront_thenSizeIsIncreased(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtFront("Uno");
 
         //When:
@@ -77,7 +77,7 @@ public class LinkedListTest {
     @Test
     public void givenAList_whenRemoveLessThanZero_thenReturnFalse(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtFront("Uno");
 
         //When:
@@ -90,7 +90,7 @@ public class LinkedListTest {
     @Test
     public void givenAListWithOneElement_whenRemoveHead_thenReturnTrue(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtFront("Uno");
 
         //When:
@@ -104,7 +104,7 @@ public class LinkedListTest {
     @Test
     public void givenAListWithTwoElements_whenRemoveHead_thenReturnTrue(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtFront("Uno");
         lista.addAtFront("Dos");
 
@@ -121,7 +121,7 @@ public class LinkedListTest {
     @Test
     public void givenAListWithTwoElements_whenRemoveTail_thenReturnTrue(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtFront("Uno");
         lista.addAtFront("Dos");
 
@@ -138,7 +138,7 @@ public class LinkedListTest {
     @Test
     public void givenAListWith3Elements_whenRemoveMiddle_thenReturnTrue(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtTail("Uno");
         lista.addAtFront("Dos");
         lista.addAtTail("Tres");
@@ -158,7 +158,7 @@ public class LinkedListTest {
     @Test
     public void givenAListWith3Elements_whenRemoveAll_thenSizeIsZero(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtTail("Uno");
         lista.addAtFront("Dos");
         lista.addAtTail("Tres");
@@ -174,7 +174,7 @@ public class LinkedListTest {
     @Test
     public void givenAListWith3Elements_whenSetAtOne_thenSuccess(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtTail("Uno");
         lista.addAtFront("Dos");
         lista.addAtTail("Tres");
@@ -194,7 +194,7 @@ public class LinkedListTest {
     @Test
     public void givenAListWith3Elements_whenSetAtLessThan0_thenReturnNull(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtTail("Uno");
         lista.addAtFront("Dos");
         lista.addAtTail("Tres");
@@ -213,9 +213,29 @@ public class LinkedListTest {
     }
 
     @Test
+    public void givenAListWith2Elements_whenAddAtFront_thenArrayIsIncreased(){
+        //Given:
+        ArrayList<String> lista = new ArrayList<>();
+        lista.addAtTail("Uno");
+        lista.addAtFront("Dos");
+        // 2 1
+
+
+        //When:
+        lista.addAtFront("Tres");
+        // 3 2 1
+
+        //Then:
+        Assertions.assertEquals(3, lista.getSize());
+        Assertions.assertEquals("Tres", lista.getAt(0));
+        Assertions.assertEquals("Dos", lista.getAt(1));
+        Assertions.assertEquals("Uno", lista.getAt(2));
+    }
+
+    @Test
     public void givenAListWith3Elements_whenSetAtIndex3_thenReturnNull(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtTail("Uno");
         lista.addAtFront("Dos");
         lista.addAtTail("Tres");
@@ -236,7 +256,7 @@ public class LinkedListTest {
     @Test
     public void givenAListWith3Elements_whenGetAtLessThan0_thenReturnNull(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtTail("Uno");
         lista.addAtFront("Dos");
         lista.addAtTail("Tres");
@@ -257,7 +277,7 @@ public class LinkedListTest {
     @Test
     public void givenAListWith3Elements_whenGetAtGreaterThanSize_thenReturnNull(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtTail("Uno");
         lista.addAtFront("Dos");
         lista.addAtTail("Tres");
@@ -277,7 +297,7 @@ public class LinkedListTest {
     @Test
     public void givenAnEmptyList_whenRemoveAllWithValue_thenIndexZeroMustBeNull(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
 
         //When:
         lista.removeAllWithValue("Uno");
@@ -290,7 +310,7 @@ public class LinkedListTest {
     @Test
     public void givenAListWith5Elements_whenRemoveAllWithValue_thenDecreaseSize(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtTail("Uno");
         lista.addAtFront("Dos");
         lista.addAtTail("Tres");
@@ -312,7 +332,7 @@ public class LinkedListTest {
     @Test
     public void givenAListWithNoCoincidences_whenRemoveAllWithValue_thenReturnTheSameList(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtTail("Uno");
         lista.addAtFront("Dos");
         lista.addAtTail("Tres");
@@ -333,7 +353,7 @@ public class LinkedListTest {
     @Test
     public void givenAListWith5Elements_whenRemoveAllWithValueClearsTheList_thenSizeIsZero(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
         lista.addAtTail("Tres");
         lista.addAtFront("Tres");
         lista.addAtTail("Tres");
@@ -353,7 +373,7 @@ public class LinkedListTest {
     @Test
     public void givenANonEmptyList_whenIterate_thenIterationIsSuccessfully(){
         //Given:
-        LinkedList<String> lista = new LinkedList<>();
+        ArrayList<String> lista = new ArrayList<>();
 
         lista.addAtFront("Tres");
         lista.addAtTail("Dos");
@@ -379,5 +399,4 @@ public class LinkedListTest {
 
         Assertions.assertFalse(iterator.hasNext());
     }
-
 }

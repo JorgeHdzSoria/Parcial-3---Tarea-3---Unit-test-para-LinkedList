@@ -103,7 +103,6 @@ public class ArrayList<T> implements List<T> {
 
         this.data = newArray;
         size = count;
-
     }
 
     public int getSize() {
