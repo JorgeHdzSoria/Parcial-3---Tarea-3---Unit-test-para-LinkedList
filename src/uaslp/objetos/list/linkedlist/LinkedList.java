@@ -2,6 +2,8 @@ package uaslp.objetos.list.linkedlist;
 
 import uaslp.objetos.list.Iterator;
 import uaslp.objetos.list.List;
+import uaslp.objetos.list.exceptions.NullNotAllowedException;
+import uaslp.objetos.list.exceptions.WrongIndexException;
 
 // Node es una inner class de LinkedList (clase anidada)
 // LinkedListIterator es una inner class de LinkedList
@@ -47,7 +49,11 @@ public class LinkedList<T> implements List<T> {
     }
 
 
-    public void addAtTail(T data) {
+    public void addAtTail(T data) throws NullNotAllowedException {
+        if(data == null){
+               throw new NullNotAllowedException();
+        }
+
         Node<T> node = new Node<>(data);
 
         node.previous = tail;
@@ -62,7 +68,11 @@ public class LinkedList<T> implements List<T> {
         size++;
     }
 
-    public void addAtFront(T data) {
+    public void addAtFront(T data){
+        if(data == null){
+            throw new NullNotAllowedException();
+        }
+
         Node<T> node = new Node<>(data);
 
         node.next = head;
@@ -77,10 +87,10 @@ public class LinkedList<T> implements List<T> {
         size++;
     }
 
-    public boolean remove(int indexToRemove) {
+    public void remove(int indexToRemove) throws WrongIndexException {
 
         if (indexToRemove < 0 || indexToRemove >= size) {
-            return false;
+            throw new WrongIndexException();
         }
 
         if (size == 1) {
@@ -101,7 +111,6 @@ public class LinkedList<T> implements List<T> {
 
         size--;
 
-        return true;
     }
 
     public void removeAll() {
@@ -110,21 +119,24 @@ public class LinkedList<T> implements List<T> {
         size = 0;
     }
 
-    public boolean setAt(int index, T data) {
+    public void setAt(int index, T data) throws WrongIndexException, NullNotAllowedException{
         if (index < 0 || index >= size) {
-            return false;
+            throw new WrongIndexException();
+        }
+
+        if(data == null){
+            throw new NullNotAllowedException();
         }
 
         Node<T> node = findNodeByIndex(index);
 
         node.data = data;
 
-        return true;
     }
 
-    public T getAt(int index) {
+    public T getAt(int index) throws WrongIndexException{
         if (index < 0 || index >= size) {
-            return null;
+            throw new WrongIndexException();
         }
 
         Node<T> node = findNodeByIndex(index);

@@ -1,6 +1,8 @@
-public class Main {
+import uaslp.objetos.list.List;
+import uaslp.objetos.list.exceptions.NullNotAllowedException;
+import uaslp.objetos.list.exceptions.WrongIndexException;
+import uaslp.objetos.list.linkedlist.LinkedList;
 
-    public static void main(String[] args) {
-    }
+public class Main {
 
 }
